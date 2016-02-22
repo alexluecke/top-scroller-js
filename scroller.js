@@ -80,7 +80,7 @@ var TopScroller = new (function($) {
 		if (top_pos >= self.config.scroll.position.start) {
 			if (!self.state.visible && !self.state.in_progress) self.show();
 		} else if (top_pos < self.config.scroll.position.start) {
-				if (self.start.visible) self.hide();
+			if (self.start.visible) self.hide();
 		}
 	};
 
