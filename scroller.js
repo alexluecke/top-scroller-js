@@ -126,7 +126,7 @@ var TopScroller = new (function($) {
 		// TODO: extract args and override configurations.
 		$(document).ready(function() {
 
-			// Really these should be handled in CSS with shims
+			// TODO: Really these should be handled in CSS with shims
 			var ie_browser = document.all;
 			self.css_fixed_pos_supported = !ie_browser
 				|| (ie_browser && document.compatMode=="CSS1Compat" && window.XMLHttpRequest);
@@ -140,7 +140,7 @@ var TopScroller = new (function($) {
 			if (self.control.classes.length > 0)
 				self.$control.attr('class', self.control.classes.join(' '))
 
-			// This should be done with CSS classes
+			// TODO: This should be done with CSS classes
 			self.$control.css({
 				//width: self.$control.width()+"px",
 				position: self.css_fixed_pos_supported ? 'fixed' : 'absolute',
