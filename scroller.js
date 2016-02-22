@@ -1,7 +1,7 @@
-var TopScroller = (function($) {
+function TopScroller($) {
 	"use strict";
 
-	var self = this;
+	var self = {};
 
 	self.$control = null;
 	self.$window = $(window);
@@ -80,7 +80,7 @@ var TopScroller = (function($) {
 		if (top_pos >= self.config.scroll.position.start) {
 			if (!self.state.visible && !self.state.in_progress) self.show();
 		} else if (top_pos < self.config.scroll.position.start) {
-			if (self.start.visible) self.hide();
+			self.hide();
 		}
 	};
 
@@ -166,6 +166,5 @@ var TopScroller = (function($) {
 	};
 
 	return self;
-})(jQuery);
 
-TopScroller.init();
+}
