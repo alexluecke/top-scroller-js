@@ -17,6 +17,12 @@ var TopScroller = new (function($) {
 		id: '#scroll-top',
 		offx: 20,
 		offy: 20,
+		duration: {
+			fade: {
+				"in": 500,
+				"out": 100,
+			},
+		}
 	};
 
 	self.config = {
@@ -28,10 +34,6 @@ var TopScroller = new (function($) {
 			},
 			duration: {
 				slide: 1000,
-				fade: {
-					"in": 500,
-					"out": 100,
-				},
 			},
 		},
 	};
@@ -99,7 +101,7 @@ var TopScroller = new (function($) {
 				self.state.visible = true;
 				self.$control.stop().animate({
 					opacity: 1
-				}, self.config.scroll.duration.fade.in);
+				}, self.control.duration.fade.in);
 			}
 		}
 	};
@@ -115,7 +117,7 @@ var TopScroller = new (function($) {
 				self.state.visible = false;
 				self.$control.stop().animate({
 					opacity: 0
-				}, self.config.scroll.duration.fade.out);
+				}, self.control.duration.fade.out);
 			}
 		}
 	}
