@@ -131,8 +131,8 @@ function TopScroller($) {
 			self.css_fixed_pos_supported = !ie_browser ||
 				(ie_browser && document.compatMode=="CSS1Compat" && window.XMLHttpRequest);
 
-			self.show = self.show_cb({});
-			self.hide = self.hide_cb({});
+			self.show = self.show_cb();
+			self.hide = self.hide_cb();
 
 			self.$control = $('<div>' + self.control.html + '</div>');
 			self.$control.attr('id', self.control.id);
