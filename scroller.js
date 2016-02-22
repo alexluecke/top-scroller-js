@@ -1,13 +1,13 @@
-var TopScroller = new (function($) {
+var TopScroller = (function($) {
 	"use strict";
 
 	var self = this;
 
 	self.$control = null;
 	self.$window = $(window);
-	self.$body = (window.opera)
-		? document.compatMode == "CSS1Compat" ? $('html') : $('body')
-		: $('html,body');
+	self.$body = (window.opera) ?
+		document.compatMode == "CSS1Compat" ? $('html') : $('body') :
+		$('html,body');
 
 	self.control = {
 		classes: [],
@@ -53,9 +53,9 @@ var TopScroller = new (function($) {
 		if (self.config.method.js === 'js')
 			self.$control.css({ opacity: 0 });
 
-		var dest = isNaN(self.config.scroll.position.to)
-			? self.config.scroll.position.to
-			: parseInt(self.config.scroll.position.to);
+		var dest = isNaN(self.config.scroll.position.to) ?
+			self.config.scroll.position.to :
+			parseInt(self.config.scroll.position.to);
 
 		// If the the destination is an object.
 		if (typeof dest == "string" && $('#' + dest).length == 1)
@@ -75,7 +75,7 @@ var TopScroller = new (function($) {
 		var top_pos = self.$window.scrollTop();
 
 		if (!this.css_fixed_pos_supported)
-				this.keepFixed()
+				this.keepFixed();
 
 		if (top_pos >= self.config.scroll.position.start) {
 			if (!self.state.visible && !self.state.in_progress) self.show();
@@ -87,22 +87,22 @@ var TopScroller = new (function($) {
 	self.keepFixed = function() {
 		var x = self.$window.scrollLeft() + self.$window.width() - self.$control.width() - self.control.offx;
 		var y = self.$window.scrollTop() + self.$window.height() - self.$control.height() - self.control.offy;
-		self.$control.css({ left: x+'px', top: y+'px'})
-	}
+		self.$control.css({ left: x+'px', top: y+'px'});
+	};
 
 	self.show_cb = function() {
 		if (self.config.method.css === 'css') {
 			return function() {
 				self.state.visible = true;
 				self.$control.addClass('visible');
-			}
+			};
 		} else {
 			return function() {
 				self.state.visible = true;
 				self.$control.stop().animate({
 					opacity: 1
 				}, self.control.duration.fade.in);
-			}
+			};
 		}
 	};
 
@@ -111,16 +111,16 @@ var TopScroller = new (function($) {
 			return function() {
 				self.state.visible = false;
 				self.$control.addClass('visible');
-			}
+			};
 		} else {
 			return function() {
 				self.state.visible = false;
 				self.$control.stop().animate({
 					opacity: 0
 				}, self.control.duration.fade.out);
-			}
+			};
 		}
-	}
+	};
 
 	self.init = function(args) {
 		// TODO: extract args and override configurations.
@@ -128,8 +128,8 @@ var TopScroller = new (function($) {
 
 			// TODO: Really these should be handled in CSS with shims
 			var ie_browser = document.all;
-			self.css_fixed_pos_supported = !ie_browser
-				|| (ie_browser && document.compatMode=="CSS1Compat" && window.XMLHttpRequest);
+			self.css_fixed_pos_supported = !ie_browser ||
+				(ie_browser && document.compatMode=="CSS1Compat" && window.XMLHttpRequest);
 
 			self.show = self.show_cb({});
 			self.hide = self.hide_cb({});
@@ -138,7 +138,7 @@ var TopScroller = new (function($) {
 			self.$control.attr('id', self.control.id);
 
 			if (self.control.classes.length > 0)
-				self.$control.attr('class', self.control.classes.join(' '))
+				self.$control.attr('class', self.control.classes.join(' '));
 
 			// TODO: This should be done with CSS classes
 			self.$control.css({
@@ -149,7 +149,7 @@ var TopScroller = new (function($) {
 				cursor: 'pointer',
 				zIndex: '100',
 				opacity: 0,
-			})
+			});
 
 			self.$control.attr({ title: self.control.title });
 
@@ -162,8 +162,8 @@ var TopScroller = new (function($) {
 			self.$window.bind('scroll resize', function(e) {
 				self.toggleControls();
 			});
-		})
-	}
+		});
+	};
 
 	return self;
 })(jQuery);
