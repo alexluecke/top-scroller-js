@@ -75,7 +75,7 @@ function TopScroller($) {
 		var top_pos = self.$window.scrollTop();
 
 		if (!this.css_fixed_pos_supported)
-				this.keepFixed();
+			this.keepFixed();
 
 		if (top_pos >= self.config.scroll.position.start) {
 			if (!self.state.visible && !self.state.in_progress) self.show();
