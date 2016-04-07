@@ -14,7 +14,7 @@ function TopScroller($) {
 		title: 'Scroll Back to Top',
 		object: null,
 		html: 'BACK TO TOP',
-		id: '#scroll-top',
+		id: 'scroll-top',
 		offx: 20,
 		offy: 20,
 		duration: {
